@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Student's Profile Page</title>
+	<style>
+		body{
+			background:url('Background.jpg');
+			background-size:fullscreen;
+			background-repeat:no-repeat;
+			margin:0;
+			padding:0;
+			font-family:Arial;
+		}
+		.profile-view{
+			margin:auto;
+			width:550px;
+			box-shadow:0px 8px 16px 0px rgba(0,0,0,0.9);
+			padding:50px 40px;
+			margin-top:40px;
+			background:#F1F1F9;
+			background:linear-gradient(top, #3c3c3c 0%, #222222 100%);
+		}
+		input[type=submit]{
+			border:none;
+			outline:none;
+			padding:10px;
+			color:#fff;
+			font-size:16px;
+			font-family:Arial;
+			background:#ff267e;
+			cursor:pointer;
+			border-radius:20px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div class="profile-view">
+		<form action="std_profile.php" method="post">
+			<div class="top-view" align="left">
+				<table>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+					<td><img src="versity_logo.jpg"></td>
+					<td><h2 style="color: #6C19A3;" >SkillShare <br/> University</h2>
+					</td>
+				</tr>
+				</table>
+				<hr/>
+			</div>
+			
+			<div class="user-info" align="left">
+				<table style="width: 100%">
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+				
+					<td>
+						<div class="User-Name" style="padding: 10px;">
+							<h3> <%= users[0].first_name+" "+ users[0].last_name  %></h3>
+							<hr>
+						</div>
+					</td>
+					<td  align="right">
+						<div class="image-container">
+							<img src="profile_images.jpg" style="width:45%">
+						</div>
+					</td>
+					
+				</tr>
+				
+				<tr>
+					<td>
+						Student ID:
+					</td>
+					<td>
+						<input type="text" name="txtID" value="<%= users[0].user_id  %>" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						CGPA:
+					</td>
+					<td>
+						<input type="text" name="txtCgpa" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Credit:
+					</td>
+					<td>
+						<input type="text" name="txtCredit" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Address:
+					</td>
+					<td>
+						<input type="text" name="txtCredit" value="<%= users[0].address  %>" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Pgroram:
+					</td>
+					<td>
+						<input type="text" name="txtProgram" value="CSE" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Email:
+					</td>
+					<td>
+						<input type="text" name="txtEmail" value="<%= users[0].email  %>" readonly>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding: 15px;">
+						<h3  style="color: #3A3372;">Credit Taken:</h3><input type="text" name="txtCredittaken" readonly>
+						<br>
+						<h3 style="color: #3A3372;">Cost:</h3><input type="text" name="txtCost" readonly>
+					</td>
+					<td>
+						<table align="right">
+						<tr>
+							<th></th>
+							<th></th>
+						</tr>
+						<tr>
+							<td><img src="payment_logo.png"></td>
+							<!-- <td><button Style="font-family: sans-serif;color: #7D0912;"><b>Make Payment</b></button></td> -->
+							<td><input type="submit" name="pay_button" value='Payment'></td>
+						</tr>
+						<tr>
+							<td><img src="Courses_logo.jpg"></td>
+							<td><button Style="font-family: sans-serif;color: #7D0912;"><b>Show Courses</b></button></td>
+						</tr>
+						
+						</table>
+					</td>
+					
+				</tr>
+				</table>
+				<hr/>
+			</div>
+			<br>
+			
+			<div align="center">
+				<a href="/logout">logout</a>
+				<br>
+				<br>
+			</div>
+		
+		</form>
+	</div>
+
+</body>
