@@ -2,11 +2,22 @@ var express = require('express');
 var courseModel = require('./../models/courses_model');
 var router = express.Router();
 
-router.get('/', function(request, response){
+router.get('/teacher', function(request, response){
 	var user = {
 		name: request.cookies['username']
 	};
 	courseModel.view_course(user, function(results){
+		if(results.length>0){
+			response.render('courses/view_course_index', {course: results});
+			//console.log(results);
+		}else{
+			response.send('invalid course format!');		
+		}
+	});
+	//response.render('courses/view_course_index');
+});
+router.get('/admin', function(request, response){
+	courseModel.view_all_course(function(results){
 		if(results.length>0){
 			response.render('courses/view_course_index', {course: results});
 			//console.log(results);

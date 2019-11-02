@@ -13,8 +13,19 @@ module.exports = {
 				}
 			});
 	},
+	
+	getByName: function(user, callback){
+		var sql = "SELECT * FROM `user` WHERE `user_id` = ?";
+			db.getResults(sql, [user.name], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
+	},
 	validate: function(user, callback){
-		var sql ="select * from user where username=? and password=?";
+		var sql ="select * from user where user_id=? and password=?";
 		db.getResults(sql, [user.username, user.password], function(result){
 
 			if(result.length > 0){
@@ -38,8 +49,8 @@ module.exports = {
 	},
 	insert: function(user, callback){
 
-		var sql ="insert into user values('', ?, ?)";
-		db.execute(sql, [user.username, user.password], function(status){
+		var sql ="insert into user values('', ?, ?, ?, ?, ?, ?, ?)";
+		db.execute(sql, [user.firstName, user.lastName, user.username, user.address, user.email, user.password, user.job], function(status){
 			callback(status);
 		});
 	},

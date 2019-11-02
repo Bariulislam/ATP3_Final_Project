@@ -6,9 +6,11 @@ var cookieParser = require('cookie-parser');
 var ejs = require('ejs');
 var login = require('./controllers/login');
 var registration = require('./controllers/registration');
-//var home = require('./controllers/home');
+var home = require('./controllers/home');
 //var user = require('./controllers/user');
 var logout = require('./controllers/logout');
+var add_courses = require('./controllers/add_courses');
+var view_courses = require('./controllers/view_courses');
 var app = express();
 
 
@@ -22,9 +24,12 @@ app.use(cookieParser());
 app.use('/abc', express.static('xyz'))
 app.use('/login', login);
 app.use('/registration', registration);
-//app.use('/home', home);
+app.use('/home', home);
 //app.use('/user', user);
 app.use('/logout', logout);
+app.use('/addcourses', add_courses);
+app.use('/viewcourses', view_courses);
+
 
 
 //ROUTER
