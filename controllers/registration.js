@@ -3,24 +3,37 @@ var userModel = require('./../models/user-model');
 var router = express.Router();
 
 router.get('/', function(request, response){
-	response.render('registration/registration_index');
+	if(request.cookies['username'] != null){
+		response.render('registration/registration_index');
+	}else{
+		response.redirect('/logout');
+	}	
 });
 
 router.post('/', function(request, response){
 	
 	var user = {
-		username: request.body.username,
-		password: request.body.password
+		firstName: request.body.txtFirstname, 
+		lastName: request.body.txtLastname,
+		username: request.body.txtusername,
+		password: request.body.txtPass,
+		job: request.body.jobselect,
+		conPassword: request.body.txtConfirmPass,
+		email: request.body.txtEmail,
+		address: request.body.txtAddress
 	};
-
-	userModel.validate(user, function(status){
-		if(status){
-			response.cookie('username', request.body.username);
-			response.redirect('/home');
-		}else{
-			response.send('invalid username/password');		
-		}
-	});
+	
+	if(user.password==user.conPassword){
+		userModel.insert(user, function(status){
+			if(status){
+				//response.cookie('username', request.body.username);
+				response.redirect('/home');
+			}
+		});
+	}
+	else{
+		response.send('Password Does not Match!');		
+	}
 
 });
 
