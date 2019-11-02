@@ -32,6 +32,17 @@
 			cursor:pointer;
 			border-radius:20px;
 		}
+		a{
+			border:none;
+			outline:none;
+			padding:3px;
+			color:#fff;
+			font-size:14px;
+			font-family:Arial;
+			background:#ff267e;
+			cursor:pointer;
+			border-radius:20px;
+		}
 	</style>
 	</head>
 
@@ -120,6 +131,10 @@
 							<tr>
 								<td></td>
 								<td><a href="/viewcourses/teacher"> View Courses</a></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><a href="/user/edituser/<%= users[0].user_id %>">Edit info</a></td>
 							</tr>
 							</table>
 						</td>
