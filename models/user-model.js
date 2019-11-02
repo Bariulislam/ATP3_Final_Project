@@ -18,7 +18,7 @@ module.exports = {
 		var sql = "SELECT * FROM `user` WHERE `user_id` = ?";
 			db.getResults(sql, [user.name], function(result){
 				if(result.length > 0 ){
-					callback(result[0]);
+					callback(result);
 				}else{
 					callback([]);
 				}
@@ -55,9 +55,9 @@ module.exports = {
 		});
 	},
 	update: function(user, callback){
-		var sql ="update user set username=?, password=? where id=?";
+		var sql ="UPDATE `user` SET `first_name`=?,`last_name`=? ,`address`=? ,`email`=?  WHERE `user_id`= ?";
 	
-		db.execute(sql, [user.username, user.password, user.id], function(status){
+		db.execute(sql, [user.firstName, user.lastName, user.address, user.email, user.username], function(status){
 			callback(status);
 		});
 	},
